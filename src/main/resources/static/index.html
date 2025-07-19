@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Estoque do Mercado</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="carrinho-de-compras.png" type="image/x-icon">
+</head>
+
+<body>
+    <main>
+        <h1>Gestão de Estoque</h1>
+
+        <section class="form-section">
+            <form id="productForm">
+                <input type="hidden" id="productId" />
+
+                <label for="name">Produto:</label>
+                <input type="text" id="name" placeholder="Nome do produto" required />
+
+                <label for="quantity">Quantidade:</label>
+                <input type="number" id="quantity" placeholder="Quantidade" required />
+
+                <label for="price">Preço:</label>
+                <input type="number" id="price" placeholder="Preço" step="0.01" required />
+
+                <label for="categoryId">Categoria:</label>
+                <select id="categoryId" required>
+                    <option value="">-- Selecione uma categoria --</option>
+                    <option value="1">Alimentação</option>
+                    <option value="2">Papelaria</option>
+                    <option value="3">Higiene</option>
+                    <option value="4">Limpeza</option>
+                    <option value="5">Bebidas</option>
+                </select>
+
+                <button type="submit">Salvar Produto</button>
+            </form>
+        </section>
+
+        <section class="list-section">
+            <h2>Produtos Cadastrados</h2>
+            <ul id="productList"></ul>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
