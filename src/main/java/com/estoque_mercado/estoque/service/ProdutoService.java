@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.estoque_mercado.estoque.dto.ProdutoDTO;
-import com.estoque_mercado.estoque.model.Categoria;
 import com.estoque_mercado.estoque.model.Produto;
-import com.estoque_mercado.estoque.repository.CategoriaRepository;
 import com.estoque_mercado.estoque.repository.ProdutoRepository;
 
 @Service
@@ -17,9 +15,6 @@ public class ProdutoService {
     
     @Autowired
     private ProdutoRepository repository;
-
-    @Autowired
-    private CategoriaRepository categoriaRepository;
 
     public List<ProdutoDTO> getAllProdutos() {
         return repository.findAll().stream().map(this::toDTO).collect(Collectors.toList());
@@ -36,11 +31,6 @@ public class ProdutoService {
         produto.setQuantity(dto.quantity);
         produto.setPrice(dto.price);
 
-        if (dto.categoryId != null) {
-            Categoria categoria = categoriaRepository.findById(dto.categoryId).orElse(null);
-            produto.setCategoria(categoria);
-        }
-
         return toDTO(repository.save(produto));
     }
 
@@ -54,12 +44,6 @@ public class ProdutoService {
         dto.name = p.getName();
         dto.quantity = p.getQuantity();
         dto.price = p.getPrice();
-
-        if (p.getCategoria() != null) {
-            dto.categoryId = p.getCategoria().getId();
-            dto.categoryName = p.getCategoria().getName();
-        }
-
         return dto;
     }
 
@@ -68,12 +52,6 @@ public class ProdutoService {
         p.setName(dto.name);
         p.setQuantity(dto.quantity);
         p.setPrice(dto.price);
-
-        if (dto.categoryId != null) {
-            Categoria categoria = categoriaRepository.findById(dto.categoryId).orElse(null);
-            p.setCategoria(categoria);
-        }
-
         return p;
     }
 }

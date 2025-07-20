@@ -21,10 +21,6 @@ public class ProdutoDTO {
         this.quantity = produto.getQuantity();
         this.price = produto.getPrice();
 
-        if (produto.getCategoria() != null) {
-            this.categoryId = produto.getCategoria().getId();
-            this.categoryName = produto.getCategoria().getName();
-        }
     }
 
     // ✅ Getters e Setters
@@ -56,17 +52,4 @@ public class ProdutoDTO {
         this.price = price;
     }
 
-    public Long getCategoryId() {
-        return categoryId;
-    }
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
 }

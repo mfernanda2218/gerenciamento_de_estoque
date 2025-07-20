@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.estoque_mercado.estoque.dto.ProdutoDTO;
-import com.estoque_mercado.estoque.model.Categoria;
 import com.estoque_mercado.estoque.model.Produto;
-import com.estoque_mercado.estoque.repository.CategoriaRepository;
 import com.estoque_mercado.estoque.repository.ProdutoRepository;
 
 @RestController
@@ -26,9 +24,6 @@ public class ProdutoController {
 
     @Autowired
     private ProdutoRepository produtoRepository;
-
-    @Autowired
-    private CategoriaRepository categoriaRepository;
 
     @GetMapping
     public List<ProdutoDTO> getAll() {
@@ -41,15 +36,9 @@ public class ProdutoController {
     @PostMapping
     public void create(@RequestBody ProdutoDTO dto) {
         Produto p = new Produto();
-        p.setName(dto.name);
-        p.setQuantity(dto.quantity);
-        p.setPrice(dto.price);
-
-        if (dto.categoryId != null) {
-            Categoria categoria = categoriaRepository.findById(dto.categoryId)
-                    .orElseThrow(() -> new RuntimeException("Categoria não encontrada"));
-            p.setCategoria(categoria);
-        }
+        p.setName(dto.getName());
+        p.setQuantity(dto.getQuantity());
+        p.setPrice(dto.getPrice());
 
         produtoRepository.save(p);
     }
@@ -59,15 +48,9 @@ public class ProdutoController {
         Produto p = produtoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
 
-        p.setName(dto.name);
-        p.setQuantity(dto.quantity);
-        p.setPrice(dto.price);
-
-        if (dto.categoryId != null) {
-            Categoria categoria = categoriaRepository.findById(dto.categoryId)
-                    .orElseThrow(() -> new RuntimeException("Categoria não encontrada"));
-            p.setCategoria(categoria);
-        }
+        p.setName(dto.getName());
+        p.setQuantity(dto.getQuantity());
+        p.setPrice(dto.getPrice());
 
         produtoRepository.save(p);
     }
