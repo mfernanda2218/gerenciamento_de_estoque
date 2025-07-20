@@ -36,8 +36,8 @@ public class ProdutoService {
         produto.setQuantity(dto.quantity);
         produto.setPrice(dto.price);
 
-        if (dto.categoriaId != null) {
-            Categoria categoria = categoriaRepository.findById(dto.categoriaId).orElse(null);
+        if (dto.categoryId != null) {
+            Categoria categoria = categoriaRepository.findById(dto.categoryId).orElse(null);
             produto.setCategoria(categoria);
         }
 
@@ -49,15 +49,15 @@ public class ProdutoService {
     }
 
     private ProdutoDTO toDTO(Produto p) {
-        ProdutoDTO dto = new ProdutoDTO();
+        ProdutoDTO dto = new ProdutoDTO(p);
         dto.id = p.getId();
         dto.name = p.getName();
         dto.quantity = p.getQuantity();
         dto.price = p.getPrice();
 
         if (p.getCategoria() != null) {
-            dto.categoriaId = p.getCategoria().getId();
-            dto.categoriaName = p.getCategoria().getName();
+            dto.categoryId = p.getCategoria().getId();
+            dto.categoryName = p.getCategoria().getName();
         }
 
         return dto;
@@ -69,8 +69,8 @@ public class ProdutoService {
         p.setQuantity(dto.quantity);
         p.setPrice(dto.price);
 
-        if (dto.categoriaId != null) {
-            Categoria categoria = categoriaRepository.findById(dto.categoriaId).orElse(null);
+        if (dto.categoryId != null) {
+            Categoria categoria = categoriaRepository.findById(dto.categoryId).orElse(null);
             p.setCategoria(categoria);
         }
 
