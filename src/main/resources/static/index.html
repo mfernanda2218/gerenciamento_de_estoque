@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <title>Estoque do Mercado</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="carrinho-de-compras.png" type="image/x-icon">
 </head>
-
 <body>
     <main>
         <h1>Gestão de Estoque</h1>
@@ -28,12 +26,12 @@
                 <label for="categoryId">Categoria:</label>
                 <select id="categoryId" required>
                     <option value="">-- Selecione uma categoria --</option>
-                    <option value="1">Alimentação</option>
-                    <option value="2">Papelaria</option>
-                    <option value="3">Higiene</option>
-                    <option value="4">Limpeza</option>
-                    <option value="5">Bebidas</option>
                 </select>
+
+                <div class="new-category">
+                    <input type="text" id="newCategoryInput" placeholder="Nova categoria" />
+                    <button type="button" id="addCategoryBtn">Adicionar Categoria</button>
+                </div>
 
                 <button type="submit">Salvar Produto</button>
             </form>
@@ -47,5 +45,4 @@
 
     <script src="script.js"></script>
 </body>
-
 </html>
