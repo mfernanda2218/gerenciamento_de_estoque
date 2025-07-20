@@ -1,13 +1,7 @@
 const form = document.getElementById('productForm');
 const list = document.getElementById('productList');
-const categorySelect = document.getElementById('categoryId');
-const newCategoryInput = document.getElementById('newCategoryInput');
-const addCategoryBtn = document.getElementById('addCategoryBtn');
 
 const API_URL = 'http://localhost:8080/api/products';
-const CATEGORY_API = 'http://localhost:8080/api/categories';
-
-let categoryMap = {}; // Map de id → nome da categoria
 
 // Submissão do formulário
 form.onsubmit = async (e) => {
@@ -17,8 +11,7 @@ form.onsubmit = async (e) => {
     const data = {
         name: form.name.value,
         quantity: parseInt(form.quantity.value),
-        price: parseFloat(form.price.value),
-        categoryId: categorySelect.value ? parseInt(categorySelect.value) : null
+        price: parseFloat(form.price.value)
     };
 
     const method = id ? 'PUT' : 'POST';
@@ -41,9 +34,7 @@ async function loadProducts() {
     list.innerHTML = '';
     products.forEach(p => {
         const item = document.createElement('li');
-        const catName = categoryMap[p.categoryId] || 'Nenhuma';
-
-        item.textContent = `${p.name} - Qtd: ${p.quantity} - R$${p.price.toFixed(2)} - Categoria: ${catName}`;
+        item.textContent = `${p.name} - Qtd: ${p.quantity} - R$${p.price.toFixed(2)}`;
 
         const editBtn = document.createElement('button');
         editBtn.textContent = 'Editar';
@@ -52,7 +43,6 @@ async function loadProducts() {
             form.name.value = p.name;
             form.quantity.value = p.quantity;
             form.price.value = p.price;
-            categorySelect.value = p.categoryId || '';
         };
 
         const delBtn = document.createElement('button');
@@ -68,61 +58,5 @@ async function loadProducts() {
     });
 }
 
-// Carregar categorias e atualizar o select
-async function loadCategories() {
-    try {
-        const res = await fetch(CATEGORY_API);
-        const categories = await res.json();
-
-        // Atualiza o map: id → nome
-        categoryMap = {};
-        categories.forEach(cat => {
-            categoryMap[cat.id] = cat.name;
-        });
-
-        categorySelect.innerHTML = '<option value="">-- Selecione uma categoria --</option>';
-        categories.forEach(cat => {
-            const opt = document.createElement("option");
-            opt.value = cat.id;
-            opt.textContent = cat.name;
-            categorySelect.appendChild(opt);
-        });
-    } catch (err) {
-        console.error("Erro ao carregar categorias:", err);
-    }
-}
-
-// Adicionar nova categoria
-async function createCategory() {
-    const name = newCategoryInput.value.trim();
-    if (!name) {
-        alert("Informe o nome da nova categoria.");
-        return;
-    }
-
-    try {
-        const res = await fetch(CATEGORY_API, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name })
-        });
-
-        if (!res.ok) throw new Error("Erro ao criar categoria");
-
-        const newCategory = await res.json();
-        newCategoryInput.value = '';
-        await loadCategories();
-        categorySelect.value = newCategory.id;
-    } catch (err) {
-        console.error("Erro ao adicionar categoria:", err);
-        alert("Erro ao adicionar categoria. Veja o console.");
-    }
-}
-
-addCategoryBtn.addEventListener('click', createCategory);
-
 // Inicialização
-(async () => {
-    await loadCategories();
-    await loadProducts();
-})();
+loadProducts();
