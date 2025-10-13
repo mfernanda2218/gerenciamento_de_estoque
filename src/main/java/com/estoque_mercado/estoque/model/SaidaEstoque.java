@@ -1,0 +1,43 @@
+package com.estoque_mercado.estoque.model;
+
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+@Data
+@Entity
+public class SaidaEstoque {
+    @Getter
+    @Setter
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private LocalDateTime dataSaida;
+    private Integer quantidade;
+    private String motivo; //venda, avaria, doação, etc
+    private Produto produto;
+
+    @ManyToOne //varias saidas pertencem a um mesmo usuario
+    @JoinColumn(name = "usuario_id") //define a chave estrangeira na tabela SaidaEstoque
+    private UsuarioResp usuarioresp;
+
+    public SaidaEstoque(LocalDateTime dataSaida, Long id, String motivo, Produto produto, Integer quantidade, UsuarioResp usuarioresp) {
+        this.dataSaida = dataSaida;
+        this.id = id;
+        this.motivo = motivo;
+        this.produto = produto;
+        this.quantidade = quantidade;
+        this.usuarioresp = usuarioresp;
+    }
+
+}
