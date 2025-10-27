@@ -1,38 +1,63 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Estoque do Mercado</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="carrinho-de-compras.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Estoque</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <header>
+        <h1>Sistema de Gerenciamento de Estoque</h1>
+        <nav>
+            <button onclick="mostrarSecao('produtos')">Produtos</button>
+            <button onclick="mostrarSecao('fornecedores')">Fornecedores</button>
+            <button onclick="mostrarSecao('entradas')">Entradas</button>
+            <button onclick="mostrarSecao('saidas')">Saídas</button>
+            <button onclick="exportarRelatorio()">Exportar CSV</button>
+        </nav>
+    </header>
+
     <main>
-        <h1>Gestão de Estoque</h1>
-
-        <section class="form-section">
-            <form id="productForm">
-                <input type="hidden" id="productId" />
-
-                <label for="name">Produto:</label>
-                <input type="text" id="name" placeholder="Nome do produto" required />
-
-                <label for="quantity">Quantidade:</label>
-                <input type="number" id="quantity" placeholder="Quantidade" required />
-
-                <label for="price">Preço:</label>
-                <input type="number" id="price" placeholder="Preço" step="0.01" required />
-
-                <button type="submit">Salvar Produto</button>
+        <section id="produtos" class="secao">
+            <h2>Produtos</h2>
+            <form id="form-produto">
+                <input type="text" id="nome" placeholder="Nome do produto" required>
+                <input type="number" id="quantidade" placeholder="Quantidade" required>
+                <input type="number" id="preco" placeholder="Preço" required>
+                <button type="submit">Salvar</button>
             </form>
+            <table id="tabela-produtos">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Qtd</th>
+                        <th>Preço</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
         </section>
 
-        <section class="list-section">
-            <h2>Produtos Cadastrados</h2>
-            <ul id="productList"></ul>
+        <section id="fornecedores" class="secao" style="display:none;">
+            <h2>Fornecedores</h2>
+            <p>Conteúdo de fornecedores...</p>
+        </section>
+
+        <section id="entradas" class="secao" style="display:none;">
+            <h2>Entradas de Estoque</h2>
+            <p>Conteúdo de entradas...</p>
+        </section>
+
+        <section id="saidas" class="secao" style="display:none;">
+            <h2>Saídas de Estoque</h2>
+            <p>Conteúdo de saídas...</p>
         </section>
     </main>
 
-    <script src="script.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/produto.js"></script>
 </body>
 </html>

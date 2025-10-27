@@ -1,46 +1,41 @@
 body {
-  font-family: sans-serif;
-  background: #f8f8f8;
-  padding: 2rem;
-  max-width: 800px;
-  margin: auto;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f2f2f2;
 }
 
-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  background: #fff;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+header {
+    background-color: #222;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
 }
 
-form label {
-  grid-column: span 2;
-  font-weight: bold;
+nav button {
+    margin: 5px;
+    padding: 10px 15px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
 }
 
-form input, form select, form button {
-  grid-column: span 2;
-  padding: 0.5rem;
-  font-size: 1rem;
+nav button:hover {
+    background: #45a049;
 }
 
-ul li {
-  margin: 0.5rem 0;
+main {
+    padding: 20px;
 }
 
-button {
-  padding: 0.6rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
 }
 
-button:hover {
-  background-color: #0056b3;
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
 }
