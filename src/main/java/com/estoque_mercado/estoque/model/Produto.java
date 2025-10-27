@@ -25,6 +25,7 @@ public class Produto {
     private String nome;
     private String descricao;
     private BigDecimal precoVenda;
+    private BigDecimal precoCusto;
     private Integer quantidadeEstoque;
     private LocalDate dataValidade;
 
@@ -38,7 +39,7 @@ public class Produto {
     @JoinColumn(name = "fornecedor_id") // chave estrangeira no banco
     private Fornecedor fornecedor;
 
-    public Produto(Categoria categoria, LocalDate dataValidade, String descricao, Fornecedor fornecedor, Long id, String nome, BigDecimal precoVenda, Integer quantidadeEstoque) {
+    public Produto(Categoria categoria, LocalDate dataValidade, String descricao, Fornecedor fornecedor, Long id, String nome, BigDecimal precoVenda, BigDecimal precoCusto, Integer quantidadeEstoque) {
         this.categoria = categoria;
         this.dataValidade = dataValidade;
         this.descricao = descricao;
@@ -46,27 +47,8 @@ public class Produto {
         this.id = id;
         this.nome = nome;
         this.precoVenda = precoVenda;
+        this.precoCusto = precoCusto;
         this.quantidadeEstoque = quantidadeEstoque;
-    }
-
-    public Object getPrecoCusto() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPrecoCusto'");
-    }
-
-    public void setPrecoCusto(Object precoCusto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setPrecoCusto'");
-    }
-
-    public Object getUnidadeMedida() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getUnidadeMedida'");
-    }
-
-    public void setUnidadeMedida(Object unidadeMedida) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setUnidadeMedida'");
     }
     
 }
