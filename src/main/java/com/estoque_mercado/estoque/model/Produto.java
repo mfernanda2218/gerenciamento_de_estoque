@@ -48,5 +48,25 @@ public class Produto {
         this.precoVenda = precoVenda;
         this.quantidadeEstoque = quantidadeEstoque;
     }
+
+    public Object getPrecoCusto() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPrecoCusto'");
+    }
+
+    public void setPrecoCusto(Object precoCusto) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setPrecoCusto'");
+    }
+
+    public Object getUnidadeMedida() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getUnidadeMedida'");
+    }
+
+    public void setUnidadeMedida(Object unidadeMedida) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setUnidadeMedida'");
+    }
     
 }

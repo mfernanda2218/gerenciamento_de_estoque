@@ -38,4 +38,12 @@ public class Fornecedor {
         this.telefone = telefone;
         this.endereco = endereco;
     }
+
+    public Object getEmail() {
+        throw new UnsupportedOperationException("Unimplemented method 'getEmail'");
+    }
+
+    public void setEmail(Object email) {
+        throw new UnsupportedOperationException("Unimplemented method 'setEmail'");
+    }
 }

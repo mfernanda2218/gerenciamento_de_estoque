@@ -47,4 +47,8 @@ public class UsuarioResp {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         return encoder.matches(senhaDigitada, this.senha);
     }
+
+    public void setEmail(String emai) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
