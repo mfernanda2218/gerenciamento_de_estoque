@@ -10,6 +10,5 @@ import com.estoque_mercado.estoque.model.Fornecedor;
 
 @Repository
 public interface EntradaEstoqueRepository extends JpaRepository<EntradaEstoque, Long> {
-    EntradaEstoque findByCodigo(String codigo);
     List <EntradaEstoque> findByFornecedor(Fornecedor fornecedor);
 }
