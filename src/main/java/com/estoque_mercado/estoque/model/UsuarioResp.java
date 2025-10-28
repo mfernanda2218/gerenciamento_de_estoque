@@ -6,6 +6,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,13 +29,15 @@ public class UsuarioResp {
     private String nome;
     private String emai;
     private String senha;
+
+    @Enumerated(EnumType.STRING)
     private Perfil perfil;
 
     //OneToMany - um usuario pode ter varias entradas e saidas de estoque
     @OneToMany(mappedBy = "usuarioResp", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EntradaEstoque> entradasEstoque;
 
-    @OneToMany(mappedBy = "usuarioResp", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "usuarioResp") // precisa corresponder exatamente ao nome do atributo abaixo
     private List<SaidaEstoque> saidasEstoque;
 
     // Método para definir a senha já criptografando

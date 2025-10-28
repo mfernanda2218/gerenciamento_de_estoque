@@ -27,9 +27,9 @@ public class SaidaEstoque {
     private String motivo; //venda, avaria, doação, etc
     private Produto produto;
 
-    @ManyToOne //varias saidas pertencem a um mesmo usuario
-    @JoinColumn(name = "usuario_id") //define a chave estrangeira na tabela SaidaEstoque
-    private UsuarioResp usuarioresp;
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private UsuarioResp usuarioResp;
 
     public SaidaEstoque(LocalDateTime dataSaida, Long id, String motivo, Produto produto, Integer quantidade, UsuarioResp usuarioresp) {
         this.dataSaida = dataSaida;
