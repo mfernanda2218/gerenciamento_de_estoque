@@ -27,6 +27,8 @@ public class EntradaEstoque {
     private Integer quantidade;
     private BigDecimal valorUnitario;
     private Produto produto;
+    @ManyToOne //varias entradas pertencem a um mesmo fornecedor
+    @JoinColumn(name = "fornecedor_id") //define a chave estrangeira na tabela
     private Fornecedor fornecedor;
 
     @ManyToOne //varias entradas pertencem a um mesmo usuario
