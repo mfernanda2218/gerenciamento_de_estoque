@@ -25,6 +25,8 @@ public class SaidaEstoque {
     private LocalDateTime dataSaida;
     private Integer quantidade;
     private String motivo; //venda, avaria, doação, etc
+    @ManyToOne
+    @JoinColumn(name = "produto_id")
     private Produto produto;
 
     @ManyToOne

@@ -26,6 +26,8 @@ public class EntradaEstoque {
     private LocalDateTime dataEntrada;
     private Integer quantidade;
     private BigDecimal valorUnitario;
+    @ManyToOne //varias entradas pertencem a um mesmo produto
+    @JoinColumn(name = "produto_id") //define a chave estrangeira na tabela
     private Produto produto;
     @ManyToOne //varias entradas pertencem a um mesmo fornecedor
     @JoinColumn(name = "fornecedor_id") //define a chave estrangeira na tabela
