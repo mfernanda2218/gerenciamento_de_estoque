@@ -2,7 +2,6 @@ package com.estoque_mercado.estoque.model;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,8 +11,8 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Data
 @Entity
+@Data
 public class Fornecedor {
     @Getter
     @Setter
@@ -28,7 +27,7 @@ public class Fornecedor {
     private String endereco;
 
     //Um fornecedor pode ter vários produtos
-    @OneToMany(mappedBy = "fornecedor", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "fornecedor")
     private List<Produto> produtos;
 
     public Fornecedor(Long id, String nome, String contato, String endereco, String telefone, String cnpj) {
