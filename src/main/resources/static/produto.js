@@ -9,8 +9,10 @@ async function carregarProdutos() {
             <tr>
                 <td>${p.id}</td>
                 <td>${p.nome}</td>
+                <td>R$ ${p.precoCusto.toFixed(2)}</td>
+                <td>R$ ${p.precoVenda.toFixed(2)}</td>
                 <td>${p.quantidade}</td>
-                <td>R$ ${p.preco.toFixed(2)}</td>
+                <td>${p.dataValidade}</td>
                 <td><button onclick="deletar(${p.id})">Excluir</button></td>
             </tr>
         `;
@@ -21,8 +23,10 @@ document.querySelector("#form-produto").addEventListener("submit", async e => {
     e.preventDefault();
     const produto = {
         nome: document.querySelector("#nome").value,
+        precoCusto: parseInt(document.querySelector("#precoCusto").value),
+        precoVenda: parseFloat(document.querySelector("#precoVenda").value),
         quantidade: parseInt(document.querySelector("#quantidade").value),
-        preco: parseFloat(document.querySelector("#preco").value)
+        dataValidade: parseInt(document.querySelector("#dataValidade").value)
     };
     await salvarProduto(produto);
     carregarProdutos();

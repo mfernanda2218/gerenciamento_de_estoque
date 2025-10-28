@@ -9,5 +9,5 @@ import com.estoque_mercado.estoque.model.UsuarioResp;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<UsuarioResp, Long> {
-    Optional<UsuarioResp> findByEmail(String useremail);
+    Optional<UsuarioResp> findByEmail(String email);
 }

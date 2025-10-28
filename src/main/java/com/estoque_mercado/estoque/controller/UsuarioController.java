@@ -42,7 +42,7 @@ public class UsuarioController {
     public UsuarioResp atualizar(@PathVariable Long id, @RequestBody UsuarioResp usuarioAtualizado) {
         UsuarioResp usuario = usuarioRepository.findById(id).orElseThrow();
         usuario.setNome(usuarioAtualizado.getNome());
-        usuario.setEmail(usuarioAtualizado.getEmai());
+        usuario.setEmail(usuarioAtualizado.getEmail());
         usuario.setSenha(usuarioAtualizado.getSenha());
         usuario.setPerfil(usuarioAtualizado.getPerfil());
         return usuarioRepository.save(usuario);

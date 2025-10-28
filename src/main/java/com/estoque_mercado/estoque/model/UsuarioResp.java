@@ -27,7 +27,7 @@ public class UsuarioResp {
     private Long id;
     
     private String nome;
-    private String emai;
+    private String email;
     private String senha;
 
     @Enumerated(EnumType.STRING)
