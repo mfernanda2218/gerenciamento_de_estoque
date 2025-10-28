@@ -31,13 +31,14 @@ public class SaidaEstoque {
     @JoinColumn(name = "usuario_id")
     private UsuarioResp usuarioResp;
 
-    public SaidaEstoque(LocalDateTime dataSaida, Long id, String motivo, Produto produto, Integer quantidade, UsuarioResp usuarioresp) {
+    public SaidaEstoque(LocalDateTime dataSaida, Long id, String motivo, Produto produto, Integer quantidade, UsuarioResp usuarioResp) {
         this.dataSaida = dataSaida;
         this.id = id;
         this.motivo = motivo;
         this.produto = produto;
         this.quantidade = quantidade;
-        this.usuarioresp = usuarioresp;
+        this.usuarioResp = usuarioResp;
     }
+
 
 }
