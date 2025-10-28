@@ -13,6 +13,7 @@ async function carregarProdutos() {
                 <td>R$ ${p.precoVenda.toFixed(2)}</td>
                 <td>${p.quantidade}</td>
                 <td>${p.dataValidade}</td>
+
                 <td><button onclick="deletar(${p.id})">Excluir</button></td>
             </tr>
         `;
@@ -26,7 +27,8 @@ document.querySelector("#form-produto").addEventListener("submit", async e => {
         precoCusto: parseInt(document.querySelector("#precoCusto").value),
         precoVenda: parseFloat(document.querySelector("#precoVenda").value),
         quantidade: parseInt(document.querySelector("#quantidade").value),
-        dataValidade: parseInt(document.querySelector("#dataValidade").value)
+        dataValidade: parseInt(document.querySelector("#dataValidade").value),
+        fornecedor: document.querySelector("#fornecedor").value
     };
     await salvarProduto(produto);
     carregarProdutos();

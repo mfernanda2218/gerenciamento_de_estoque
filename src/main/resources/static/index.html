@@ -38,6 +38,7 @@
                         <th>Preço Venda</th>
                         <th>Quantidade Estoque</th>
                         <th>Data de Validade</th>
+                        <th>Fornecedor</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -46,13 +47,27 @@
 
         <section id="fornecedores" class="secao" style="display:none;">
             <h2>Fornecedores</h2>
-            <p>Conteúdo de fornecedores...</p>
+            <form id="form-fornecedor"></form>
+                <input type="text" id="nomeFornecedor" placeholder="Nome do fornecedor" required>
+                <button type="submit">Adicionar Fornecedor</button>
+            </form>
+            <table id="tabela-fornecedores">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Quantidade de Itens</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
         </section>
 
         <section id="entradas" class="secao" style="display:none;">
             <h2>Entradas de Estoque</h2>
             <p>Conteúdo de entradas...</p>
         </section>
+
 
         <section id="saidas" class="secao" style="display:none;">
             <h2>Saídas de Estoque</h2>
